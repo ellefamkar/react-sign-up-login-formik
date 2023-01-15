@@ -12,7 +12,8 @@ const initialValues = {
     name: "",
     email: "",
     password: "",
-    // confirmPassword: "",
+    phoneNumber : "",
+    confirmPassword: "",
     // select: "",
     // isChecked: "" 
 }
@@ -22,30 +23,21 @@ const onSubmit = (values) =>{
     console.log(values);
 }
 
+
 // 3. 
-// const validate = (values) =>{
-//     let errors = {};
-    
-//     if(!values.name){
-//         errors.name = "Name is required";
-//     }
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-    
-//     if(!values.email){
-//         errors.email = "Email is required";
-//     }
-
-    
-//     if(!values.password){
-//         errors.password = "Password is required";
-//     }
-
-//     return errors;
-// }
 const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
     email: Yup.string().email("Invalid email address").required("Email is required"),
-    password: Yup.string().required("Password is Required")
+    password: Yup.string().required("Password is required")
+    .min(8, 'Password should have minimum 8 chars.')
+    .matches(/[0-9]/, 'Password requires a number')
+    .matches(/[a-z]/, 'Password requires a lowercase letter')
+    .matches(/[A-Z]/, 'Password requires an uppercase letter')
+    .matches(/[^\w]/, 'Password requires a symbol'),
+    confirmPassword: Yup.string().required("Password Confirm is required").oneOf([Yup.ref('password'), null], 'Passwords do not match'),
+    phoneNumber: Yup.string().required("Phone Number is required").matches(phoneRegExp, 'Invalid Phone Number')
 });
 
 const Signup = () => {
@@ -73,9 +65,19 @@ const Signup = () => {
                     {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span> }
                 </div>
                 <div>
+                    <label>Phone Number</label>
+                    <input type="text" name="phoneNumber" {...formik.getFieldProps('phoneNumber')} />
+                    {formik.errors.phoneNumber && formik.touched.phoneNumber && <span>{formik.errors.phoneNumber}</span> }
+                </div>
+                <div>
                     <label>Password</label>
                     <input type="password" name="password" {...formik.getFieldProps('password')} />
                     {formik.errors.password && formik.touched.password && <span>{formik.errors.password}</span> }
+                </div>
+                <div>
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirmPassword" {...formik.getFieldProps('confirmPassword')} />
+                    {formik.errors.confirmPassword && formik.touched.confirmPassword && <span>{formik.errors.confirmPassword}</span> }
                 </div>
                 <div>
                     <button type='submit'>
