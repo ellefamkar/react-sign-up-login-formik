@@ -1,9 +1,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 // 1.manage state 
 // 2.handle form submission 
-// 3.validation - error message 
+// 3.validation - error message --> we add yup for this
 // 4. formik --> use formik hook --> useFormik
 
 // 1. 
@@ -22,25 +23,30 @@ const onSubmit = (values) =>{
 }
 
 // 3. 
-const validate = (values) =>{
-    let errors = {};
+// const validate = (values) =>{
+//     let errors = {};
     
-    if(!values.name){
-        errors.name = "Name is required";
-    }
+//     if(!values.name){
+//         errors.name = "Name is required";
+//     }
 
     
-    if(!values.email){
-        errors.email = "Email is required";
-    }
+//     if(!values.email){
+//         errors.email = "Email is required";
+//     }
 
     
-    if(!values.password){
-        errors.password = "Password is required";
-    }
+//     if(!values.password){
+//         errors.password = "Password is required";
+//     }
 
-    return errors;
-}
+//     return errors;
+// }
+const validationSchema = Yup.object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
+    password: Yup.string().required("Password is Required")
+});
 
 const Signup = () => {
 
@@ -49,7 +55,7 @@ const Signup = () => {
     const formik = useFormik({
         initialValues,
         onSubmit,
-        validate
+        validationSchema
     });
 
     console.log(formik.errors);
