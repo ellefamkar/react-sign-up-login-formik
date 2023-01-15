@@ -58,24 +58,23 @@ const Signup = () => {
         validationSchema
     });
 
-    console.log(formik.errors);
-
     return (
         <>
             <form onSubmit={formik.handleSubmit}>
                 <div>
                     <label>Name</label>
-                    <input type="text" name="name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                    {/* <input type="text" name="name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} /> */}
+                    <input type="text" name="name" {...formik.getFieldProps('name')} />
                     {formik.errors.name && formik.touched.name && <span>{formik.errors.name}</span> }
                 </div>
                 <div>
                     <label>Email</label>
-                    <input type="email" name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                    <input type="email" name="email" {...formik.getFieldProps('email')} />
                     {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span> }
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="password" name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                    <input type="password" name="password" {...formik.getFieldProps('password')} />
                     {formik.errors.password && formik.touched.password && <span>{formik.errors.password}</span> }
                 </div>
                 <div>
