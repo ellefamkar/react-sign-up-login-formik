@@ -3,11 +3,17 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import Input from './common/Input';
+import RadioInputs from './common/RadioInputs';
 
 // 1.manage state 
 // 2.handle form submission 
 // 3.validation - error message --> we add yup for this
 // 4. formik --> use formik hook --> useFormik
+
+const radioOptions = [
+    {label: "Male", value: 0},
+    {label: "Female", value: 1}
+];
 
 // 1. 
 const initialValues = {
@@ -71,13 +77,7 @@ const Signup = () => {
                 <Input label="Phone Number" name="phoneNumber" formik={formik} />
                 <Input label="Password" name="password" formik={formik} />
                 <Input label="Confirm Password" name="confirmPassword" formik={formik} />
-                <div>
-                    <input type="radio" name="gender" value="0" id='0' onChange={formik.handleChange} checked={formik.values.gender === '0'} />
-                    <label htmlFor='0'>Female</label>
-                    <input type="radio" name="gender" value="1" id='1' onChange={formik.handleChange} checked={formik.values.gender === '1'} />
-                    <label htmlFor='1'>Male</label>
-                    {formik.errors.gender && formik.touched.gender && <span>{formik.errors.gender}</span> }
-                </div>
+                <RadioInputs type='radio' name="gender" formik={formik} radioOptions={radioOptions} />
                 <div>
                     <button type='submit' disabled={!formik.isValid}>
                         submit
