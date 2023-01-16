@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 // 1.manage state 
 // 2.handle form submission 
@@ -24,7 +25,6 @@ const onSubmit = (values) =>{
     console.log(values);
 }
 
-
 // 3. 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -44,14 +44,23 @@ const validationSchema = Yup.object({
 
 const Signup = () => {
 
-    // name, pass, email => submit => DB => redirect /panel 
+    const [formValues, setFormValues] = useState(null);
 
+    // name, pass, email => submit => DB => redirect /panel 
     const formik = useFormik({
-        initialValues,
+        initialValues: formValues || initialValues,
         onSubmit,
         validationSchema,
         validateOnMount: true,
+        enableReinitialize: true
     });
+
+    useEffect(()=>{
+        axios.get('http://localhost:3001/users/1').then(response => {
+            console.log(response.data);
+            setFormValues(response.data);
+        }).catch(error => console.log(error));
+    }, [])
 
     return (
         <>
