@@ -14,6 +14,7 @@ const initialValues = {
     password: "",
     phoneNumber : "",
     confirmPassword: "",
+    gender: "",
     // select: "",
     // isChecked: "" 
 }
@@ -37,7 +38,8 @@ const validationSchema = Yup.object({
     .matches(/[A-Z]/, 'Password requires an uppercase letter')
     .matches(/[^\w]/, 'Password requires a symbol'),
     confirmPassword: Yup.string().required("Password Confirm is required").oneOf([Yup.ref('password'), null], 'Passwords do not match'),
-    phoneNumber: Yup.string().required("Phone Number is required").matches(phoneRegExp, 'Invalid Phone Number')
+    phoneNumber: Yup.string().required("Phone Number is required").matches(phoneRegExp, 'Invalid Phone Number'),
+    gender: Yup.string().required("Gender is required")
 });
 
 const Signup = () => {
@@ -55,30 +57,37 @@ const Signup = () => {
         <>
             <form onSubmit={formik.handleSubmit}>
                 <div>
-                    <label>Name</label>
+                    <label htmlFor='name'>Name</label>
                     {/* <input type="text" name="name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} /> */}
-                    <input type="text" name="name" {...formik.getFieldProps('name')} />
+                    <input type="text" id='name' name="name" {...formik.getFieldProps('name')} />
                     {formik.errors.name && formik.touched.name && <span>{formik.errors.name}</span> }
                 </div>
                 <div>
-                    <label>Email</label>
-                    <input type="email" name="email" {...formik.getFieldProps('email')} />
+                    <label htmlFor='email'>Email</label>
+                    <input type="email" id='email' name="email" {...formik.getFieldProps('email')} />
                     {formik.errors.email && formik.touched.email && <span>{formik.errors.email}</span> }
                 </div>
                 <div>
-                    <label>Phone Number</label>
-                    <input type="text" name="phoneNumber" {...formik.getFieldProps('phoneNumber')} />
+                    <label htmlFor='phoneNumber'>Phone Number</label>
+                    <input type="text" id='phoneNumber' name="phoneNumber" {...formik.getFieldProps('phoneNumber')} />
                     {formik.errors.phoneNumber && formik.touched.phoneNumber && <span>{formik.errors.phoneNumber}</span> }
                 </div>
                 <div>
-                    <label>Password</label>
-                    <input type="password" name="password" {...formik.getFieldProps('password')} />
+                    <label htmlFor='password'>Password</label>
+                    <input type="password" id='password' name="password" {...formik.getFieldProps('password')} />
                     {formik.errors.password && formik.touched.password && <span>{formik.errors.password}</span> }
                 </div>
                 <div>
-                    <label>Confirm Password</label>
-                    <input type="password" name="confirmPassword" {...formik.getFieldProps('confirmPassword')} />
+                    <label htmlFor='confirmPassword'>Confirm Password</label>
+                    <input type="password"id='confirmPassword' name="confirmPassword" {...formik.getFieldProps('confirmPassword')} />
                     {formik.errors.confirmPassword && formik.touched.confirmPassword && <span>{formik.errors.confirmPassword}</span> }
+                </div>
+                <div>
+                    <input type="radio" name="gender" value="0" id='0' onChange={formik.handleChange} checked={formik.values.gender === '0'} />
+                    <label htmlFor='0'>Female</label>
+                    <input type="radio" name="gender" value="1" id='1' onChange={formik.handleChange} checked={formik.values.gender === '1'} />
+                    <label htmlFor='1'>Male</label>
+                    {formik.errors.gender && formik.touched.gender && <span>{formik.errors.gender}</span> }
                 </div>
                 <div>
                     <button type='submit' disabled={!formik.isValid}>
