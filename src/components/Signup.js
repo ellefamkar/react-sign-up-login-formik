@@ -45,7 +45,6 @@ const initialValues = {
 
 // 2. 
 const onSubmit = (values) =>{
-    console.log(values);
     axios.post('http://localhost:3001/users', values).then(
         response => console.log(response)
     ).catch(error => console.log(error))
