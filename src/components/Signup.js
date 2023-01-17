@@ -11,8 +11,8 @@ import RadioInputs from './common/RadioInputs';
 // 4. formik --> use formik hook --> useFormik
 
 const radioOptions = [
-    {label: "Male", value: 0},
-    {label: "Female", value: 1}
+    {label: "Male", value: "0"},
+    {label: "Female", value: "1"}
 ];
 
 // 1. 
@@ -64,7 +64,6 @@ const Signup = () => {
 
     useEffect(()=>{
         axios.get('http://localhost:3001/users/1').then(response => {
-            console.log(response.data);
             setFormValues(response.data);
         }).catch(error => console.log(error));
     }, [])
@@ -77,7 +76,7 @@ const Signup = () => {
                 <Input label="Phone Number" name="phoneNumber" formik={formik} />
                 <Input label="Password" name="password" formik={formik} />
                 <Input label="Confirm Password" name="confirmPassword" formik={formik} />
-                <RadioInputs type='radio' name="gender" formik={formik} radioOptions={radioOptions} />
+                <RadioInputs name="gender" formik={formik} radioOptions={radioOptions} />
                 <div>
                     <button type='submit' disabled={!formik.isValid}>
                         submit
