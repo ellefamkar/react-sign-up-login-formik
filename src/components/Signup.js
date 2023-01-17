@@ -40,7 +40,7 @@ const initialValues = {
     gender: "",
     nationality: "",
     interests:[],
-    // isChecked: "" 
+    terms: false 
 }
 
 // 2. 
