@@ -1,0 +1,28 @@
+.InputController{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.InputsTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input{
+    padding: 0.3rem;
+    border: 2px solid #319197;
+    border-radius: 3px;
+    outline: none;
+}
+
+label{
+    font-size: 15px;
+    margin-bottom: 0.3rem;
+}
+
+.Error{
+    color:red;
+    font-size: 10px;
+    margin-bottom: 2px;
+}

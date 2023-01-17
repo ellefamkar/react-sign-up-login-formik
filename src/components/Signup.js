@@ -5,7 +5,9 @@ import axios from 'axios';
 import Input from './common/Input';
 import RadioInputs from './common/RadioInputs';
 import SelectOptionInput from './common/SelectOptionInput';
-import Checkbox from './common/Checkbox';
+// import Checkbox from './common/Checkbox';
+import styles from './SignUp.module.css';
+import Image from './common/Image';
 
 // 1.manage state 
 // 2.handle form submission 
@@ -24,11 +26,11 @@ const selectOptions = [
     {label: "German", value :"GE"},
 ];
 
-const checkBoxOptions = [
-    {label: "React", value: "React"},
-    {label: "Vue", value: "Vue"},
-    {label: "Angular", value: "Angular"}
-]
+// const checkBoxOptions = [
+//     {label: "React", value: "React"},
+//     {label: "Vue", value: "Vue"},
+//     {label: "Angular", value: "Angular"}
+// ]
 
 // 1. 
 const initialValues = {
@@ -91,23 +93,28 @@ const Signup = () => {
 
     return (
         <>
-            <form onSubmit={formik.handleSubmit}>
-                <Input label="Name" name="name" formik={formik} />
-                <Input label="Email" name="email" formik={formik} />
-                <Input label="Phone Number" name="phoneNumber" formik={formik} />
-                <Input label="Password" name="password" formik={formik} />
-                <Input label="Confirm Password" name="confirmPassword" formik={formik} />
-                <RadioInputs name="gender" formik={formik} radioOptions={radioOptions} />
-                <SelectOptionInput name="nationality" formik={formik} selectOptions={selectOptions} />
-                <Checkbox name="interests" formik={formik} checkBoxOptions={checkBoxOptions} />
-                <input type='checkbox' name="terms" value={true} id="terms" onChange={formik.handleChange} checked={formik.values.terms} />
-                <label htmlFor="terms">Accept the terms and conditions</label>
-                {formik.errors.terms && formik.touched.terms && <span>{formik.errors.terms}</span> }
-                <div>
-                    <button type='submit' disabled={!formik.isValid}>
-                        submit
-                    </button>
-                </div>
+            <form className={styles.form} onSubmit={formik.handleSubmit}>
+               <Image className={styles.ImageContainer} />
+               <div>
+                    <Input label="Name" name="name" formik={formik} />
+                    <Input label="Email" name="email" formik={formik} />
+                    <Input label="Password" name="password" formik={formik} />
+                    <Input label="Confirm Password" name="confirmPassword" formik={formik} />
+                    <Input label="Phone Number" name="phoneNumber" formik={formik} />
+                    <SelectOptionInput name="nationality" formik={formik} selectOptions={selectOptions} />
+                    <RadioInputs name="gender" formik={formik} radioOptions={radioOptions} />
+                    {/* <Checkbox name="interests" formik={formik} checkBoxOptions={checkBoxOptions} /> */}
+                    <div className={styles.CheckboxContainer}>
+                        <input type='checkbox' name="terms" value={true} id="terms" onChange={formik.handleChange} checked={formik.values.terms} />
+                        <label htmlFor="terms">Accept the terms and conditions</label>
+                        {formik.errors.terms && formik.touched.terms && <span>{formik.errors.terms}</span> }
+                    </div>
+                    <div>
+                        <button type='submit' disabled={!formik.isValid}>
+                            Submit
+                        </button>
+                    </div>
+               </div>
             </form>   
         </>
     );
