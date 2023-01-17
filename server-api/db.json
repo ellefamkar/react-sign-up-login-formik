@@ -7,7 +7,9 @@
             "password": "Eln4zF***",
             "confirmPassword": "Eln4zF***",
             "phoneNumber" : "09171870927",
-            "gender": "0"
+            "gender": "1",
+            "nationality": "IR",
+            "interests": "React"
         },
         {
             "id":"2",
@@ -16,7 +18,9 @@
             "password": "Tann4Zz***",
             "confirmPassword": "Tann4Zz***",
             "phoneNumber" : "09172870927",
-            "gender": "1"
+            "gender": "1",
+            "nationality": "IR",
+            "interests": "Vue"
         },
         {
             "id":"3",
@@ -25,7 +29,9 @@
             "password": "Eln4zFRon***",
             "confirmPassword": "Eln4zFRon***",
             "phoneNumber" : "09171870923",
-            "gender": "0"
+            "gender": "0",
+            "nationality": "IR",
+            "interests": "Angular"
         },
         {
             "id":"4",
@@ -34,7 +40,9 @@
             "password": "Eln4TedzF***",
             "confirmPassword": "Eln4TedzF***",
             "phoneNumber" : "09171870924",
-            "gender": "0"
+            "gender": "0",
+            "nationality": "AM",
+            "interests": "React"
         }
     ]
 }

@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import Input from './common/Input';
 import RadioInputs from './common/RadioInputs';
+import SelectOptionInput from './common/SelectOptionInput';
+import Checkbox from './common/Checkbox';
 
 // 1.manage state 
 // 2.handle form submission 
@@ -15,6 +17,19 @@ const radioOptions = [
     {label: "Female", value: "1"}
 ];
 
+const selectOptions = [
+    {label: "Select Nationality", value :""},
+    {label: "Iranian", value :"IR"},
+    {label: "American", value :"AM"},
+    {label: "German", value :"GE"},
+];
+
+const checkBoxOptions = [
+    {label: "React", value: "React"},
+    {label: "Vue", value: "Vue"},
+    {label: "Angular", value: "Angular"}
+]
+
 // 1. 
 const initialValues = {
     name: "",
@@ -23,7 +38,8 @@ const initialValues = {
     phoneNumber : "",
     confirmPassword: "",
     gender: "",
-    // select: "",
+    nationality: "",
+    interests:[],
     // isChecked: "" 
 }
 
@@ -46,7 +62,9 @@ const validationSchema = Yup.object({
     .matches(/[^\w]/, 'Password requires a symbol'),
     confirmPassword: Yup.string().required("Password Confirm is required").oneOf([Yup.ref('password'), null], 'Passwords do not match'),
     phoneNumber: Yup.string().required("Phone Number is required").matches(phoneRegExp, 'Invalid Phone Number'),
-    gender: Yup.string().required("Gender is required")
+    gender: Yup.string().required("Gender is required"),
+    nationality: Yup.string().required('Please choose your nationality'),
+    interests: Yup.array().min(1).required("Choose at least one experty")
 });
 
 const Signup = () => {
@@ -77,6 +95,8 @@ const Signup = () => {
                 <Input label="Password" name="password" formik={formik} />
                 <Input label="Confirm Password" name="confirmPassword" formik={formik} />
                 <RadioInputs name="gender" formik={formik} radioOptions={radioOptions} />
+                <SelectOptionInput name="nationality" formik={formik} selectOptions={selectOptions} />
+                <Checkbox name="interests" formik={formik} checkBoxOptions={checkBoxOptions} />
                 <div>
                     <button type='submit' disabled={!formik.isValid}>
                         submit
