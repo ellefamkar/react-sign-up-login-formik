@@ -1,52 +1,19 @@
 {
-    "users" : [
-        {
-            "id":"1",
-            "name": "Elnaz",
-            "email": "Elnaz@gmail.com",
-            "password": "Eln4zF***",
-            "confirmPassword": "Eln4zF***",
-            "phoneNumber" : "09171870927",
-            "gender": "1",
-            "nationality": "IR",
-            "interests": ["React", "Vue"],
-            "terms": true
-        },
-        {
-            "id":"2",
-            "name": "Tannaz",
-            "email": "Tannaz@gmail.com",
-            "password": "Tann4Zz***",
-            "confirmPassword": "Tann4Zz***",
-            "phoneNumber" : "09172870927",
-            "gender": "1",
-            "nationality": "IR",
-            "interests": ["React"],
-            "terms": false
-        },
-        {
-            "id":"3",
-            "name": "Ron",
-            "email": "Ron@gmail.com",
-            "password": "Eln4zFRon***",
-            "confirmPassword": "Eln4zFRon***",
-            "phoneNumber" : "09171870923",
-            "gender": "0",
-            "nationality": "IR",
-            "interests": ["Vue"],
-            "terms": true
-        },
-        {
-            "id":"4",
-            "name": "Ted",
-            "email": "Ted@gmail.com",
-            "password": "Eln4TedzF***",
-            "confirmPassword": "Eln4TedzF***",
-            "phoneNumber" : "09171870924",
-            "gender": "0",
-            "nationality": "AM",
-            "interests": ["Angular"],
-            "terms": true
-        }
-    ]
+  "users": [
+    {
+      "name": "Elnaz",
+      "email": "ellefamkar@gmail.com",
+      "password": "Eln4zF***@#",
+      "phoneNumber": "09171870927",
+      "confirmPassword": "Eln4zF***@#",
+      "gender": "1",
+      "nationality": "IR",
+      "interests": [
+        "Vue",
+        "Angular"
+      ],
+      "terms": true,
+      "id": 1
+    }
+  ]
 }
