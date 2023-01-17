@@ -23,6 +23,7 @@ label{
 
 .Error{
     color:red;
+    background-color: black;
     font-size: 10px;
     margin-bottom: 2px;
 }

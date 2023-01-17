@@ -45,14 +45,6 @@ form::after {
     border-radius: 8px;
 }
 
-.ImageContainer{
-width:200px;
-height: 200px;
-position: absolute;
-top: 5%;
-left: 5%;
-}
-
 .CheckboxContainer{
     margin-bottom: 1rem;
     display: flex;
@@ -62,7 +54,6 @@ left: 5%;
 .CheckboxContainer label{
     margin-bottom: 0 !important;
 }
-
 
 button:disabled {
     /* background: linear-gradient(130deg,#ff781867,#af002c69 41.07%,#31909769 76.05%);
@@ -85,7 +76,6 @@ button{
     font-size: 1rem;
     cursor: pointer;
 }
-
 
 .ColumnCreator{
     display: flex;

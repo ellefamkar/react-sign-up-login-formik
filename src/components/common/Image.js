@@ -1,10 +1,11 @@
 import React from 'react';
-import UserProfile from '../../images/ellefamkar.jpeg';
+import UserProfile from '../../images/ellefamkar.jpg';
+import styles from './Image.module.css';
 
-const Image = ({className}) => {
+const Image = () => {
     return (
-        <div className={className}>
-            <image src={UserProfile} alt="UserProfile" />
+        <div className={styles.ImageContainer}>
+            <img src={UserProfile} alt="UserProfile" />
         </div>
     );
 };

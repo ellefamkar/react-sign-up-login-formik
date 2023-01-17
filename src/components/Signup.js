@@ -94,7 +94,7 @@ const Signup = () => {
     return (
         <>
             <form className={styles.form} onSubmit={formik.handleSubmit}>
-               <Image className={styles.ImageContainer} />
+               <Image />
                <div>
                     <Input label="Name" name="name" formik={formik} />
                     <Input label="Email" name="email" formik={formik} />
