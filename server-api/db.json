@@ -9,7 +9,8 @@
             "phoneNumber" : "09171870927",
             "gender": "1",
             "nationality": "IR",
-            "interests": ["React", "Vue"]
+            "interests": ["React", "Vue"],
+            "terms": true
         },
         {
             "id":"2",
@@ -20,7 +21,8 @@
             "phoneNumber" : "09172870927",
             "gender": "1",
             "nationality": "IR",
-            "interests": []
+            "interests": ["React"],
+            "terms": false
         },
         {
             "id":"3",
@@ -31,7 +33,8 @@
             "phoneNumber" : "09171870923",
             "gender": "0",
             "nationality": "IR",
-            "interests": []
+            "interests": ["Vue"],
+            "terms": true
         },
         {
             "id":"4",
@@ -42,7 +45,8 @@
             "phoneNumber" : "09171870924",
             "gender": "0",
             "nationality": "AM",
-            "interests": []
+            "interests": ["Angular"],
+            "terms": true
         }
     ]
 }
