@@ -46,7 +46,7 @@ form::after {
 }
 
 .CheckboxContainer{
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
 }
@@ -74,10 +74,18 @@ button{
     border-radius: 5px;
     color: #000000;
     font-size: 1rem;
+    margin-top: 1rem;
     cursor: pointer;
 }
 
 .ColumnCreator{
     display: flex;
     flex:1;
+}
+
+.Error{
+    color:red;
+    /* background-color: black; */
+    font-size: 10.5px;
+    margin-bottom: 2px;
 }

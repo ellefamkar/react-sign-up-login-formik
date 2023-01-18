@@ -5,7 +5,7 @@ import axios from 'axios';
 import Input from './common/Input';
 import RadioInputs from './common/RadioInputs';
 import SelectOptionInput from './common/SelectOptionInput';
-import Checkbox from './common/Checkbox';
+// import Checkbox from './common/Checkbox';
 import styles from './SignUp.module.css';
 import Image from './common/Image';
 
@@ -26,11 +26,11 @@ const selectOptions = [
     {label: "German", value :"GE"},
 ];
 
-const checkBoxOptions = [
-    {label: "React", value: "React"},
-    {label: "Vue", value: "Vue"},
-    {label: "Angular", value: "Angular"}
-];
+// const checkBoxOptions = [
+//     {label: "Single", value: "Single"},
+//     {label: "Married", value: "Married"},
+//     {label: "Not willing to say", value: "Not willing to say"}
+// ];
 
 // 1. 
 const initialValues = {
@@ -42,7 +42,7 @@ const initialValues = {
     gender: "",
     nationality: "",
     interests:[],
-    terms: false 
+    terms: false, 
 };
 
 // 2. 
@@ -68,8 +68,8 @@ const validationSchema = Yup.object({
     phoneNumber: Yup.string().required("Phone Number is required").matches(phoneRegExp, 'Invalid Phone Number'),
     gender: Yup.string().required("Gender is required"),
     nationality: Yup.string().required('Please choose your nationality'),
-    interests: Yup.array().min(1).required("Choose at least one experty"),
-    terms: Yup.boolean().required('Please accept the terms').oneOf([true],'Please accept the terms')
+    interests: Yup.array().min(1).required("Choose at least one item"),
+    terms: Yup.boolean().oneOf([true],'Please accept the terms').required('Please accept the terms'),
 });
 
 const Signup = () => {
@@ -103,12 +103,13 @@ const Signup = () => {
                     <Input label="Phone Number" name="phoneNumber" formik={formik} />
                     <SelectOptionInput name="nationality" formik={formik} selectOptions={selectOptions} />
                     <RadioInputs name="gender" formik={formik} radioOptions={radioOptions} />
-                    <Checkbox name="interests" formik={formik} checkBoxOptions={checkBoxOptions} />
+                    {/* <Checkbox name="interests" formik={formik} checkBoxOptions={checkBoxOptions} /> */}
                     <div className={styles.CheckboxContainer}>
-                        <input type='checkbox' name="terms" value={true} id="terms" onChange={formik.handleChange} checked={formik.values.terms} />
+                        <input type='checkbox' name="terms" value={true} id="terms" onBlur={formik.handleBlur} onChange={formik.handleChange} checked={formik.values.terms} />
                         <label htmlFor="terms">Accept the terms and conditions</label>
-                        {formik.errors.terms && formik.touched.terms && <span>{formik.errors.terms}</span> }
                     </div>
+                        {console.log(formik.errors.terms)}
+                        {formik.errors.terms && formik.touched.terms && (<span className={styles.Error}>{formik.errors.terms}</span>)}
                     <div>
                         <button type='submit' disabled={!formik.isValid}>
                             Submit

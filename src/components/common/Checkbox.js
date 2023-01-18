@@ -4,13 +4,15 @@ import styles from './Checkbox.module.css';
 const Checkbox = ({name, formik, checkBoxOptions}) => {
     return (
         <div className={styles.CheckboxContainer}>
-            { checkBoxOptions.map((item) => (
+            {checkBoxOptions.map((item) => (
                 <React.Fragment key={item.value}>
-                    <input type='checkbox' name={name} value={item.value} id={item.value} onChange={formik.handleChange} checked={formik.values[name].includes(item.value)} />
+                    <input type='checkbox' id={item.value} name={name} value={item.value} onBlur={formik.handleBlur} onChange={formik.handleChange} checked={formik.values[name].includes(item.value)} />
                     <label htmlFor={item.value}>{item.label}</label>
                 </React.Fragment>
             ))}
-            {formik.errors[name] && formik.touched[name] && <span>{formik.errors[name]}</span> }
+            <div>
+            {formik.errors[name] && formik.touched[name] && (<span className={styles.Error}>{formik.errors[name]}</span>)}
+            </div>
         </div>
     );
 };
