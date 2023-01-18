@@ -5,7 +5,7 @@ import styles from './Image.module.css';
 const Image = () => {
     return (
         <div className={styles.ImageContainer}>
-            <img src={UserProfile} alt="UserProfile" />
+            {/* <img src={UserProfile} alt="UserProfile" /> */}
         </div>
     );
 };
