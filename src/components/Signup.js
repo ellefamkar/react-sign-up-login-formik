@@ -5,7 +5,7 @@ import axios from 'axios';
 import Input from './common/Input';
 import RadioInputs from './common/RadioInputs';
 import SelectOptionInput from './common/SelectOptionInput';
-// import Checkbox from './common/Checkbox';
+import Checkbox from './common/Checkbox';
 import styles from './SignUp.module.css';
 import Image from './common/Image';
 
@@ -26,11 +26,11 @@ const selectOptions = [
     {label: "German", value :"GE"},
 ];
 
-// const checkBoxOptions = [
-//     {label: "React", value: "React"},
-//     {label: "Vue", value: "Vue"},
-//     {label: "Angular", value: "Angular"}
-// ]
+const checkBoxOptions = [
+    {label: "React", value: "React"},
+    {label: "Vue", value: "Vue"},
+    {label: "Angular", value: "Angular"}
+];
 
 // 1. 
 const initialValues = {
@@ -43,14 +43,14 @@ const initialValues = {
     nationality: "",
     interests:[],
     terms: false 
-}
+};
 
 // 2. 
 const onSubmit = (values) =>{
     axios.post('http://localhost:3001/users', values).then(
         response => console.log(response)
     ).catch(error => console.log(error))
-}
+};
 
 // 3. 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -103,7 +103,7 @@ const Signup = () => {
                     <Input label="Phone Number" name="phoneNumber" formik={formik} />
                     <SelectOptionInput name="nationality" formik={formik} selectOptions={selectOptions} />
                     <RadioInputs name="gender" formik={formik} radioOptions={radioOptions} />
-                    {/* <Checkbox name="interests" formik={formik} checkBoxOptions={checkBoxOptions} /> */}
+                    <Checkbox name="interests" formik={formik} checkBoxOptions={checkBoxOptions} />
                     <div className={styles.CheckboxContainer}>
                         <input type='checkbox' name="terms" value={true} id="terms" onChange={formik.handleChange} checked={formik.values.terms} />
                         <label htmlFor="terms">Accept the terms and conditions</label>

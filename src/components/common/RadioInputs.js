@@ -6,7 +6,7 @@ const RadioInputs = ({name, formik, radioOptions}) => {
         <div className={styles.RadioContainer}>
             { radioOptions.map((item) => (
                 <React.Fragment key={item.value}>
-                    <input type='radio' name={name} value={item.value} id={item.value} onChange={formik.handleChange} checked={formik.values.gender === item.value} />
+                    <input type='radio' name={name} value={item.value} id={item.value} onChange={formik.handleChange} checked={formik.values[name] === item.value} />
                     <label htmlFor={item.value}>{item.label}</label>
                 </React.Fragment>
             ))}
