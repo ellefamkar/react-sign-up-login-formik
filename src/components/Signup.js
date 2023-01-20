@@ -8,6 +8,10 @@ import SelectOptionInput from './common/SelectOptionInput';
 // import Checkbox from './common/Checkbox';
 import styles from './SignUp.module.css';
 import Image from './common/Image';
+// import { validation } from "./validation";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+// import { notify } from "./toast";
 
 // 1.manage state 
 // 2.handle form submission 
@@ -49,7 +53,8 @@ const initialValues = {
 const onSubmit = (values) =>{
     axios.post('http://localhost:3001/users', values).then(
         response => console.log(response)
-    ).catch(error => console.log(error))
+    ).catch(error => console.log(error));
+    // notify("You have successfully Signed Up!","success");
 };
 
 // 3. 
@@ -69,7 +74,7 @@ const validationSchema = Yup.object({
     gender: Yup.string().required("Gender is required"),
     nationality: Yup.string().required('Please choose your nationality'),
     interests: Yup.array().min(1).required("Choose at least one item"),
-    terms: Yup.boolean().oneOf([true],'Please accept the terms').required('Please accept the terms'),
+    terms: Yup.boolean().required('Please accept the terms').oneOf([true],'Please accept the terms'),
 });
 
 const Signup = () => {
@@ -98,8 +103,8 @@ const Signup = () => {
                <div>
                     <Input label="Name" name="name" formik={formik} />
                     <Input label="Email" name="email" formik={formik} />
-                    <Input label="Password" name="password" formik={formik} />
-                    <Input label="Confirm Password" name="confirmPassword" formik={formik} />
+                    <Input label="Password" name="password" type='password' formik={formik} />
+                    <Input label="Confirm Password" name="confirmPassword" type='password' formik={formik} />
                     <Input label="Phone Number" name="phoneNumber" formik={formik} />
                     <SelectOptionInput name="nationality" formik={formik} selectOptions={selectOptions} />
                     <RadioInputs name="gender" formik={formik} radioOptions={radioOptions} />
@@ -108,7 +113,6 @@ const Signup = () => {
                         <input type='checkbox' name="terms" value={true} id="terms" onBlur={formik.handleBlur} onChange={formik.handleChange} checked={formik.values.terms} />
                         <label htmlFor="terms">Accept the terms and conditions</label>
                     </div>
-                        {console.log(formik.errors.terms)}
                         {formik.errors.terms && formik.touched.terms && (<span className={styles.Error}>{formik.errors.terms}</span>)}
                     <div>
                         <button type='submit' disabled={!formik.isValid}>
@@ -117,6 +121,7 @@ const Signup = () => {
                     </div>
                </div>
             </form>   
+            {/* <ToastContainer /> */}
         </>
     );
 };
