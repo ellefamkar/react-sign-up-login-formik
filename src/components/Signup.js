@@ -73,7 +73,7 @@ const validationSchema = Yup.object({
     phoneNumber: Yup.string().required("Phone Number is required").matches(phoneRegExp, 'Invalid Phone Number'),
     gender: Yup.string().required("Gender is required"),
     nationality: Yup.string().required('Please choose your nationality'),
-    interests: Yup.array().min(1).required("Choose at least one item"),
+    // interests: Yup.array().min(1).required("Choose at least one item"),
     terms: Yup.boolean().required('Please accept the terms').oneOf([true],'Please accept the terms'),
 });
 
@@ -92,7 +92,9 @@ const Signup = () => {
 
     useEffect(()=>{
         axios.get('http://localhost:3001/users/1').then(response => {
-            setFormValues(response.data);
+            if(response){
+                setFormValues(response.data);
+            }
         }).catch(error => console.log(error));
     }, [])
 

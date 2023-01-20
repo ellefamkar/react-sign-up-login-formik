@@ -1,19 +1,5 @@
 {
   "users": [
-    {
-      "name": "Elnaz",
-      "email": "ellefamkar@gmail.com",
-      "password": "Eln4zF***@#",
-      "phoneNumber": "09171870927",
-      "confirmPassword": "Eln4zF***@#",
-      "gender": "1",
-      "nationality": "IR",
-      "interests": [
-        "Vue",
-        "Angular"
-      ],
-      "terms": true,
-      "id": 1
-    }
+    
   ]
 }
