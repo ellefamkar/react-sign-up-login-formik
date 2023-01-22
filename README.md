@@ -1,70 +1,213 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to my React Sign Up | Login Form Application validated with Formik and Yup 👋
 
 ## Available Scripts
 
 In the project directory, you can run:
-
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm test`
+## Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Thanks for checking out my Sign Up form app project.
+Remember that "Every day is a learning day" and try to learn from everyone! 
 
-### `npm run build`
+ ### Screenshot 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](./public/images/Sign-up-Screenshot.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](./public/images/Sign-up-screenshot-validation.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](./public/images/Login-Screenshot.png)
 
-### `npm run eject`
+### Links
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Live Site URL: [React Sign Up | Login Form Application](https://melodic-cactus-7d3a19.netlify.app/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## My process
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Where to find resources
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The first think to do is to look for your perfect design! So let's checkout [dribble](https://dribbble.com/) for our favourite design to begin!
 
-## Learn More
+### Built with
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Reactjs
+- React Toastify
+- Building custom hooks
+- Styled Components
+- CSS
+- Flexbox
+- CSS Grid
+- Desktop-first workflow
+- CSS Animations
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can use any tools you like to help you complete the project. So if you got something you'd like to practice, feel free to give it a try. However, i made it responsive for all the devices, since my users should be able to: View the optimal layout depending on their device's screen size
 
-### Code Splitting
+### What I learned
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This projects helped me being more familiar with the details of react, how to validate sign up and login forms and handle errors together with giving styles with Styled components, toastify and use my css knowledge as well to create a responsive project with small details on colors,sizes and so on.
 
-### Analyzing the Bundle Size
+To see parts of my codes and see how you can add code snippets, see below:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+``` JSX
 
-### Making a Progressive Web App
+const submitHandler = (event) => {
+      event.preventDefault();
+      notify();
+      if (!Object.keys(errors).length) {
+         notify("Successful", "success");
+      } else {
+         notify("Invalid", "error");
+         setTouched({
+            name: true,
+            email: true,
+            password: true,
+            confirmPassword: true,
+            select: true,
+            isAccepted: true,
+         });
+      }
+   };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+     const changeHandler = (event) => {
+      if (event.target.name === "isAccepted") {
+         setData({
+            ...data,
+            [event.target.name]: event.target.checked,
+         });
+      } else {
+         setData({
+            ...data,
+            [event.target.name]: event.target.value,
+         });
+         if (event.target.value) {
+            event.target.style.background = "#ffffff";
+            event.target.style.color = "#000000";
+         } else {
+            event.target.style.background = "transparent";
+            event.target.style.color = "transparent";
+         }
+      }
+   };
 
-### Advanced Configuration
+```
+```css
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+const FormContainer = styled.div`
+   background-color: rgba(0, 0, 34, 0.241);
+   border-radius: 10px;
+   width: 400px;
+   height: 500px;
+   padding: 2.5rem 2rem;
+   background: rgba(255, 255, 255, 0.2);
+   border-radius: 16px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(4.9px);
+   -webkit-backdrop-filter: blur(4.9px);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   z-index: 2;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   
+   h2 {
+      color: #ffffff;
+   }
+   p {
+      position: relative;
+      font-family: sans-serif;
+      text-transform: uppercase;
+      font-size: 1.6em;
+      letter-spacing: 4px;
+      overflow: hidden;
+      background: linear-gradient(103deg, #00128f, #fff, #000528);
+      background-repeat: no-repeat;
+      background-size: 80%;
+      animation: animate 5s linear infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: rgba(225, 225, 225, 0.5);
+      margin-bottom: 1rem;
+   }
 
-### Deployment
+   form {
+      width: 100%;
+      .buttonContainer{
+        width:50%;
+        margin:1rem auto 0.2rem auto;
+        display: flex;
+        flex-direction:row;
+       justify-content: space-between;
+       align-items: center;
+      }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+      button,
+      a {
+         cursor: pointer;
+         padding: 0.5rem 1rem;
+         border-radius: 5px;
+         border: none;
+         margin-top:1rem;
+       
+         &.signup {
+            background-color: #f09;
+            color: #ffffff;
+         }
+      }
+   }
 
-### `npm run build` fails to minify
+   & > div {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   @keyframes animate {
+      0% {
+         background-position: -500%;
+      }
+      100% {
+         background-position: 500%;
+      }
+   }
+`;
+
+```
+
+### Useful resources
+
+In order to do this project in a correct way you need to have a good knowledge of html and css, js and reactjs so let's master at them with these fruitful resources.
+
+- [w3schools](https://www.w3schools.com/) - This helps you a lot with both your css and html which is easy to read and has numerous examples.
+- [MDN](https://developer.mozilla.org/en-US/) - Remember that no matter how many tutorial videos you have watched, you always need to learn details and features from codes documentations
+- [codeacademy](https://www.codecademy.com/)
+- [udemy](https://www.udemy.com/) - Here you can find a number of tutorials in different languages
+- [coursera](https://www.coursera.org/)
+
+## Author
+
+- Website - [Elle Famkar](https://bespoke-marigold-f2f8e3.netlify.app/)
+- Twitter - [@Ellefamkar](https://www.twitter.com/ellefamkar)
+
+Feel free to ask any questions come to your mind  and send me message via my current temporary website in the link above!
+
+## Acknowledgments
+
+I am thankful to each and every person in this area who teaches me a single piece of code! I learn every single day from amazing people! so I need to thank you all ❤
+
+**Have fun using this project!** 🚀
