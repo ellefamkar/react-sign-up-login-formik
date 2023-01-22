@@ -26,15 +26,15 @@ Remember that "Every day is a learning day" and try to learn from everyone!
 
  ### Screenshot 
 
-![](./public/images/Sign-up-Screenshot.png)
+![](./src/images/Screenshot-1.png)
 
-![](./public/images/Sign-up-screenshot-validation.png)
+![](./src/images/Screenshot%20(191).png)
 
-![](./public/images/Login-Screenshot.png)
+![](./src/images/Screenshot%20(189).png)
 
 ### Links
 
-- Live Site URL: [React Sign Up | Login Form Application](https://melodic-cactus-7d3a19.netlify.app/)
+- Live Site URL: [React Sign Up | Login Form Application](https://github.com/ellefamkar/react-sign-up-login-formik)
 
 ## My process
 
@@ -46,146 +46,101 @@ The first think to do is to look for your perfect design! So let's checkout [dri
 
 - Reactjs
 - React Toastify
-- Building custom hooks
-- Styled Components
-- CSS
+- Formik
+- Yup Validation
+- CSS Modules
 - Flexbox
 - CSS Grid
 - Desktop-first workflow
 - CSS Animations
+- Animated emoji
 
 You can use any tools you like to help you complete the project. So if you got something you'd like to practice, feel free to give it a try. However, i made it responsive for all the devices, since my users should be able to: View the optimal layout depending on their device's screen size
 
 ### What I learned
 
-This projects helped me being more familiar with the details of react, how to validate sign up and login forms and handle errors together with giving styles with Styled components, toastify and use my css knowledge as well to create a responsive project with small details on colors,sizes and so on.
+This projects helped me being more familiar with the details of react, how to validate sign up and login forms and handle errors together with giving styles using css modules files, validate form with Yup and Formik, toastify and use my css knowledge as well to create a responsive project with small details on colors,sizes and so on.
 
 To see parts of my codes and see how you can add code snippets, see below:
 
 ``` JSX
 
-const submitHandler = (event) => {
-      event.preventDefault();
-      notify();
-      if (!Object.keys(errors).length) {
-         notify("Successful", "success");
-      } else {
-         notify("Invalid", "error");
-         setTouched({
-            name: true,
-            email: true,
-            password: true,
-            confirmPassword: true,
-            select: true,
-            isAccepted: true,
-         });
-      }
-   };
+const validationSchema = Yup.object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
+    password: Yup.string().required("Password is required")
+    .min(8, 'Password should have minimum 8 chars.')
+    .matches(/[0-9]/, 'Password requires a number')
+    .matches(/[a-z]/, 'Password requires a lowercase letter')
+    .matches(/[A-Z]/, 'Password requires an uppercase letter')
+    .matches(/[^\w]/, 'Password requires a symbol'),
+    confirmPassword: Yup.string().required("Password Confirm is required").oneOf([Yup.ref('password'), null], 'Passwords do not match'),
+    phoneNumber: Yup.string().required("Phone Number is required").matches(phoneRegExp, 'Invalid Phone Number'),
+    gender: Yup.string().required("Gender is required"),
+    nationality: Yup.string().required('Please choose your nationality'),
+    // interests: Yup.array().min(1).required("Choose at least one item"),
+    terms: Yup.boolean().required('Please accept the terms').oneOf([true],'Please accept the terms'),
+});
 
-     const changeHandler = (event) => {
-      if (event.target.name === "isAccepted") {
-         setData({
-            ...data,
-            [event.target.name]: event.target.checked,
-         });
-      } else {
-         setData({
-            ...data,
-            [event.target.name]: event.target.value,
-         });
-         if (event.target.value) {
-            event.target.style.background = "#ffffff";
-            event.target.style.color = "#000000";
-         } else {
-            event.target.style.background = "transparent";
-            event.target.style.color = "transparent";
-         }
-      }
-   };
+const Signup = () => {
+
+    const [formValues, setFormValues] = useState(null);
+
+    // name, pass, email => submit => DB => redirect /panel 
+    const formik = useFormik({
+        initialValues: formValues || initialValues,
+        onSubmit,
+        validationSchema,
+        validateOnMount: true,
+        enableReinitialize: true
+    });
+
+}
 
 ```
 ```css
 
-const FormContainer = styled.div`
-   background-color: rgba(0, 0, 34, 0.241);
-   border-radius: 10px;
-   width: 400px;
-   height: 500px;
-   padding: 2.5rem 2rem;
-   background: rgba(255, 255, 255, 0.2);
-   border-radius: 16px;
-   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-   backdrop-filter: blur(4.9px);
-   -webkit-backdrop-filter: blur(4.9px);
-   border: 1px solid rgba(255, 255, 255, 0.1);
-   z-index: 2;
-   text-align: center;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-between;
-   
-   h2 {
-      color: #ffffff;
-   }
-   p {
-      position: relative;
-      font-family: sans-serif;
-      text-transform: uppercase;
-      font-size: 1.6em;
-      letter-spacing: 4px;
-      overflow: hidden;
-      background: linear-gradient(103deg, #00128f, #fff, #000528);
-      background-repeat: no-repeat;
-      background-size: 80%;
-      animation: animate 5s linear infinite;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: rgba(225, 225, 225, 0.5);
-      margin-bottom: 1rem;
-   }
+form::before{
+    content: "";
+    background: linear-gradient(130deg,#ff7a18,#af002d 41.07%,#319197 76.05%);
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    z-index: 1;
+    border-radius: 12px;
+}
 
-   form {
-      width: 100%;
-      .buttonContainer{
-        width:50%;
-        margin:1rem auto 0.2rem auto;
-        display: flex;
-        flex-direction:row;
-       justify-content: space-between;
-       align-items: center;
-      }
+form::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 2;
+    border-radius: 8px;
+}
 
-      button,
-      a {
-         cursor: pointer;
-         padding: 0.5rem 1rem;
-         border-radius: 5px;
-         border: none;
-         margin-top:1rem;
-       
-         &.signup {
-            background-color: #f09;
-            color: #ffffff;
-         }
-      }
-   }
+.CheckboxContainer{
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
 
-   & > div {
-      width: 50%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-   }
+.CheckboxContainer label{
+    margin-bottom: 0 !important;
+}
 
-   @keyframes animate {
-      0% {
-         background-position: -500%;
-      }
-      100% {
-         background-position: 500%;
-      }
-   }
-`;
+button:disabled {
+    background-color: #319197;
+    opacity: 0.4;
+    cursor:no-drop;
+    color: #eaeaea;
+}
+
 
 ```
 
