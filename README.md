@@ -28,9 +28,7 @@ Remember that "Every day is a learning day" and try to learn from everyone!
 
 ![](./src/images/Screenshot-1.png)
 
-![](./src/images/Screenshot%20(191).png)
-
-![](./src/images/Screenshot%20(189).png)
+![](./src/images/Screenshot-2.png)
 
 ### Links
 
@@ -148,6 +146,7 @@ button:disabled {
 
 In order to do this project in a correct way you need to have a good knowledge of html and css, js and reactjs so let's master at them with these fruitful resources.
 
+- [Animated Fluent Emoji](https://animated-fluent-emoji.vercel.app/) - This gives you animated emojis
 - [w3schools](https://www.w3schools.com/) - This helps you a lot with both your css and html which is easy to read and has numerous examples.
 - [MDN](https://developer.mozilla.org/en-US/) - Remember that no matter how many tutorial videos you have watched, you always need to learn details and features from codes documentations
 - [codeacademy](https://www.codecademy.com/)
