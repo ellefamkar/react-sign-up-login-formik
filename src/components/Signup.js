@@ -8,10 +8,9 @@ import SelectOptionInput from './common/SelectOptionInput';
 // import Checkbox from './common/Checkbox';
 import styles from './SignUp.module.css';
 import Image from './common/Image';
-// import { validation } from "./validation";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import { notify } from "./toast";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "./toast";
 
 // 1.manage state 
 // 2.handle form submission 
@@ -54,7 +53,7 @@ const onSubmit = (values) =>{
     axios.post('http://localhost:3001/users', values).then(
         response => console.log(response)
     ).catch(error => console.log(error));
-    // notify("You have successfully Signed Up!","success");
+    notify("Successful Submition!","success");
 };
 
 // 3. 
@@ -123,7 +122,7 @@ const Signup = () => {
                     </div>
                </div>
             </form>   
-            {/* <ToastContainer /> */}
+            <ToastContainer />
         </>
     );
 };
