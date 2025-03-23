@@ -32,7 +32,7 @@ Remember that "Every day is a learning day" and try to learn from everyone!
 
 ### Links
 
-- Live Site URL: [React Sign Up | Login Form Application](https://github.com/ellefamkar/react-sign-up-login-formik)
+- Live Site URL: [React Sign Up | Login Form Application](https://github.com/ellefamkar/react-sign-up-login-formik](https://react-form-formik.netlify.app/)
 
 ## My process
 
