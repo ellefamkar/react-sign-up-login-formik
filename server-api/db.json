@@ -4,25 +4,13 @@
       "name": "Elle Famkar",
       "email": "ellefamkar@gmail.com",
       "password": "eLN4Z*@#$",
-      "phoneNumber": "09171870927",
+      "phoneNumber": "061406010874",
       "confirmPassword": "eLN4Z*@#$",
-      "gender": "0",
-      "nationality": "IR",
+      "gender": "1",
+      "nationality": "AU",
       "interests": [],
       "terms": true,
       "id": 1
-    },
-    {
-      "name": "tannaz",
-      "email": "tannaz@gmail.com",
-      "password": "eLN4Z*@#$1",
-      "phoneNumber": "09171870922",
-      "confirmPassword": "eLN4Z*@#$1",
-      "gender": "1",
-      "nationality": "AM",
-      "interests": [],
-      "terms": true,
-      "id": 2
     }
   ]
 }

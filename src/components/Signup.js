@@ -12,11 +12,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 
-// 1.manage state 
-// 2.handle form submission 
-// 3.validation - error message --> we add yup for this
-// 4. formik --> use formik hook --> useFormik
-
 const radioOptions = [
     {label: "Male", value: "0"},
     {label: "Female", value: "1"}
@@ -24,16 +19,11 @@ const radioOptions = [
 
 const selectOptions = [
     {label: "Select Nationality", value :""},
+    {label: "Australian", value :"AU"},
     {label: "Iranian", value :"IR"},
     {label: "American", value :"AM"},
     {label: "German", value :"GE"},
 ];
-
-// const checkBoxOptions = [
-//     {label: "Single", value: "Single"},
-//     {label: "Married", value: "Married"},
-//     {label: "Not willing to say", value: "Not willing to say"}
-// ];
 
 // 1. 
 const initialValues = {
