@@ -32,7 +32,7 @@ Remember that "Every day is a learning day" and try to learn from everyone!
 
 ### Links
 
-- Live Site URL: [React Sign Up | Login Form Application](https://github.com/ellefamkar/react-sign-up-login-formik)
+- Live Site URL: [React Sign Up | Login Form Application](https://react-form-formik.netlify.app/)
 
 ## My process
 
@@ -76,7 +76,6 @@ const validationSchema = Yup.object({
     phoneNumber: Yup.string().required("Phone Number is required").matches(phoneRegExp, 'Invalid Phone Number'),
     gender: Yup.string().required("Gender is required"),
     nationality: Yup.string().required('Please choose your nationality'),
-    // interests: Yup.array().min(1).required("Choose at least one item"),
     terms: Yup.boolean().required('Please accept the terms').oneOf([true],'Please accept the terms'),
 });
 
@@ -84,7 +83,6 @@ const Signup = () => {
 
     const [formValues, setFormValues] = useState(null);
 
-    // name, pass, email => submit => DB => redirect /panel 
     const formik = useFormik({
         initialValues: formValues || initialValues,
         onSubmit,
